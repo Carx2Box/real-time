@@ -20,13 +20,6 @@
               "name": "run web",
               "url": "http://localhost:4200",
               "webRoot": "${workspaceFolder}/02-basic"
-          },
-          {
-              "type": "chrome",
-              "request": "attach",
-              "name": "Attach to Chrome",
-              "port": 9222,
-              "webRoot": "${workspaceFolder}/02-basic"
-          }
+          }        
     ]
 }

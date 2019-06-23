@@ -32,13 +32,18 @@ export default class Server {
     private listenSockets() {
       console.log('Listen connections');
       this.io.on('connection', client =>  {
-          console.log('Client connected');
+          console.log('Client connected', client.id);
+
+          socket.clientConnect(client);
           
-          // enviar mensaje
+          // configure user event capture
+          socket.configureUser(client, this.io);
+          
+          // enviar mensaje event capture
           socket.message(client, this.io);
           
-          // detecta evento desconectar el cliente
-          socket.desconectar(client);
+          // client disconnect event capture
+          socket.desconectar(client);          
       })
     }
 
