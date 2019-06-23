@@ -33,8 +33,7 @@ router.post('/messages/:id', (req: Request, res: Response) => {
     ok: true,
     body,
     from,
-    id,
-    test: 'test 2'
+    id
   });
 })
 
