@@ -44,6 +44,8 @@ export const configureUser =  (client: Socket, io: socketIO.Server) => {
   });  
 }
 
+
+
 export const getUsers= (client: Socket, io: SocketIO.Server) =>  {
   client.on('get-users',() =>  {
 
