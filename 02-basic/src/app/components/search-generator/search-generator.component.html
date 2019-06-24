@@ -1,0 +1,41 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="panelSearch">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Search flight
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="row ">
+                <div class="col-md-3 ">
+                    <mat-form-field>
+                        <input matInput placeholder="Origin ">
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-3 ">
+                    <mat-form-field>
+                        <input matInput placeholder="Destination ">
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-3 ">
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker " placeholder="Date ">
+                        <mat-datepicker-toggle matSuffix [for]="picker "></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-12 ">
+                    <button class="btn btn-primary " (click)="onSubmit() "> Search </button>
+                </div>
+            </div>
+
+
+        </mat-expansion-panel>
+    </mat-accordion>
+
+</form>

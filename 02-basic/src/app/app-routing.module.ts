@@ -3,14 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { UserGuardService } from './guards/user-guard.service';
+import { HomeComponent } from './page/home/home.component';
+import { FlightsComponent } from './page/flights/flights.component';
 
 const appRoutes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'messages',
-    component: MessagesComponent,
-    canActivate: [UserGuardService]
+  { path: '', component: HomeComponent },
+  { path: 'flights',
+    component: FlightsComponent,
    },
-  { path: '**', component: LoginComponent }
+  { path: '**', component: HomeComponent }
 ];
 
 @NgModule({

@@ -1,0 +1,15 @@
+<footer class="bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <p class="m-0  text-white">Copyright &copy; 2019</p>
+            </div>
+
+            <div class="col-6 text-right text-white ">
+                Server status:
+                <span *ngIf="wsService.socketStatus" class="text-success">Online</span>
+                <span *ngIf="!wsService.socketStatus" class="text-danger">Offline</span>
+            </div>
+        </div>
+    </div>
+</footer>
