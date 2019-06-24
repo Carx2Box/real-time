@@ -18,6 +18,7 @@ export class WebsocketService {
   checkStatus() {
     this.socket.on('connect', () =>  {
       console.log('connect to server');
+      this.loadStorage();
       this.socketStatus = true;
     });
 
@@ -39,7 +40,7 @@ export class WebsocketService {
 
   login(name: string) {
 
-    return new Promise((resolve, reject)=>  {
+    return new Promise((resolve, reject) =>  {
       this.emit('login-user', {name}, res =>  {
         this.user = new User(name);
         this.saveStorage();
@@ -63,6 +64,4 @@ export class WebsocketService {
       this.login(this.user.name);
     }
   }
-
-
 }
