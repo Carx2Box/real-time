@@ -25,7 +25,7 @@ export default class Server {
         this.listenSockets();
     }
 
-    public static get instance() {
+    public static get instance(): Server {
       return this._intance || ( this._intance = new this());
     }
 
@@ -34,16 +34,19 @@ export default class Server {
       this.io.on('connection', client =>  {
           console.log('Client connected', client.id);
 
-          socket.clientConnect(client);
+          socket.clientConnect(client, this.io);
           
           // configure user event capture
           socket.configureUser(client, this.io);
+
+          // obtener users
+          socket.getUsers(client, this.io);
           
           // enviar mensaje event capture
           socket.message(client, this.io);
           
           // client disconnect event capture
-          socket.desconectar(client);          
+          socket.desconectar(client, this.io);                    
       })
     }
 

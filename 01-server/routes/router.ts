@@ -1,6 +1,8 @@
 
-import {Router, Request, Response, response} from 'express'
+import {Router, Request, Response, response} from 'express';
 import Server from '../classes/server';
+import { Socket } from 'net';
+import { userConnect } from '../sockets/socket';
 
 const router = Router();
 
@@ -26,8 +28,7 @@ router.post('/messages', (req: Request, res: Response) => {
     body,
     from
   });
-
-})
+});
 
 router.post('/messages/:id', (req: Request, res: Response) => {
   const body = req.body.body
@@ -44,7 +45,26 @@ router.post('/messages/:id', (req: Request, res: Response) => {
   // Mensaje específico
   server.io.in(id).emit('message-private', payload)
 
-  res.json( {ok: true, body, from,id } );
-})
+  res.json({ok: true, body, from,id });
+});
+
+
+router.get('/users', (req: Request, res: Response) =>  {
+  const server = Server.instance;
+
+  server.io.clients((err: any, clients: string[]) =>  {  
+    if (err) {
+      return res.json({ok: false, error: err});
+    }
+
+    res.json({ok: true,clients: clients});
+  });
+ 
+});
+
+router.get('/users/detail', (req: Request, res: Response) =>  {    
+
+  res.json({ok: true, clients: userConnect.getUserList()});
+});
 
 export default router;
